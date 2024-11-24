@@ -1,0 +1,129 @@
+<div>
+    <p id="titulo">Scaner</p>
+    <input id="scannerInput" type="text" [(ngModel)]="scannedCode" (keydown.enter)="onScan()" #scannerInput
+    placeholder="Escanea el código de barras" autofocus (blur)="refocusInput()"
+    style="opacity: 0; position: absolute;" />
+    <div id="card_container">
+
+        <div class="card" id="total">
+            <div>
+                <img src="assets/img/groups.svg" alt="total">
+                <section class="info">
+                    <p>{{stats.total}}</p>
+
+                </section>
+            </div>
+            <span>Total de votantes de la facultad</span>
+        </div>
+
+        <div class="card" id="votos">
+            <div>
+                <img src="assets/img/votos.svg" alt="votos">
+                <section class="info">
+                    <p>{{stats.con_acceso}}</p>
+
+                </section>
+            </div>
+            <span>Votos registrados</span>
+        </div>
+
+        <div class="card" id="porciento">
+            <div>
+                <img src="assets/img/clock_loader_porciento.svg" alt="porciento">
+                <section class="info">
+                    <p>{{stats.porciento}} %</p>
+
+                </section>
+            </div>
+            <span>Porcentaje cumplido</span>
+        </div>
+
+    </div>
+    <br />
+    <hr />
+
+    <!--Estudiante scaner-->
+    <div class="table_scaner">
+
+        <div class="scaner_create valid">
+
+            <div class="card_scaner">
+                <div class="img">
+                   
+                    @if(img !== null && img !== ''){
+                        <img [src]="'data:image/jpeg;base64,' + img" alt="Foto"/>
+                
+                        }@else {
+                            <img src="assets/img/imgUser.png" alt="Foto" />
+                        }
+                </div>
+            </div>
+
+
+            <div class="formContainer">
+
+                <div class="input-box">
+                    <label>Nombre: </label>
+                    <input readonly value={{nombre}}>
+                </div>
+                <div class="input-box">
+                    <label>Solapín: </label>
+                    <input readonly value={{solapin}}>
+
+                </div>
+                <div class="input-box">
+                    <label>Dni: </label>
+                    <input readonly value={{dni}}>
+
+                </div>
+                <div class="input-box">
+                    <label>Grupo: </label>
+                    <input readonly value={{grupo}}>
+
+                </div>
+                <div class="input-box">
+                    <label>Area: </label>
+                    <input readonly value={{area}}>
+
+                </div>
+            </div>
+
+        </div>
+
+        <!--Tabla Estudiantes-->
+        <div class="table-section">
+            <h4>Estudiantes de la Facultad</h4>
+            <br/>
+            <table>
+                <thead>
+                    <tr>
+                        <th>#</th>
+                        <th>Nombre</th>
+        
+                        <th>Dni</th>
+                        <th>Solapín</th>
+                        <th>Grupo</th>
+
+                    </tr>
+                </thead>
+                <tbody>
+                     
+                    @for(estudiante of estudiantes; track $index; let idx = $count) {
+                    <tr>
+                        <td>{{$index + 1}}</td>
+                        <td>{{estudiante.nombre}}</td>
+                        <td>{{estudiante.ci}}</td>
+                        <td>{{estudiante.solapin}}</td>
+                        <td>{{estudiante.grupo}}</td>
+
+                    </tr>
+
+                    } 
+                </tbody>
+
+            </table>
+        </div>
+    </div>
+   
+
+</div>

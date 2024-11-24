@@ -1,0 +1,23 @@
+<div class="container_opcion">
+    <section class="menu_section">
+      <img src="assets/img/menu.svg"/>
+      <h4>Menú</h4>
+    </section>
+    <br/>
+    <!--Captura de datos-->
+    <div (click)="showSubmenu('captura_datos')" class="opciones">
+      <section class="menu_opctions" routerLink="scaner" routerLinkActive="active">
+        <img src="assets/img/barcode_scanne.svg"  alt="Escáner"/>
+        <h4>Scaner</h4>
+      </section>
+      <section class="menu_opctions" routerLink="facultad" routerLinkActive="active">
+        <img src="../../assets/img/monitoring.svg"  alt="monitoring"/>
+        <h4>Reportes por facultad</h4>
+      </section>
+      <section class="menu_opctions" routerLink="general" routerLinkActive="active">
+        <img src="../../assets/img/bar_chart.svg"  alt="chart"/>
+        <h4>Reportes generales</h4>
+      </section>
+    </div>
+
+</div>

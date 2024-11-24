@@ -1,0 +1,40 @@
+
+
+.container_opcion{ 
+    width: 300px;
+    background-color: #EBEBED;
+    min-height: 100%;
+  
+}
+.menu_section{
+    display: flex;
+    align-items: center;
+    justify-content: start;
+    color: #5c7fb8;
+    font-family: sans-serif;
+}
+.menu_section img{
+  margin: 10px;
+}
+
+.menu_opctions{
+    display: flex;
+    align-items: center;
+    justify-content: start;
+    color: #444;
+    font-family: sans-serif;
+    width: 100%;
+    height: 50px;
+}
+.menu_opctions img{
+  margin: 25px;
+}
+.menu_opctions:hover{
+  background-color: white;
+  cursor: pointer;
+}
+
+.menu_opctions.active {
+    background-color: white;
+    cursor: pointer;
+  }

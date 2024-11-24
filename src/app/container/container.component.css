@@ -1,0 +1,30 @@
+
+
+.container{
+    display: flex;
+    flex-direction: column;
+    height: auto;
+    min-height: 100vh;
+
+}
+.panelContenido{
+    flex: 1;
+    display: flex;
+    height: auto;
+    min-height: 60vh;
+}
+.panelContainers{
+    width: 78%;
+    min-height: 100%;
+}
+.menuContainer{
+    border-left: 2px solid #ccc;
+    width: 22%;
+    background-color: #F9F7F3;
+}
+
+
+
+.panelOperaciones{
+    width: 100%;
+}

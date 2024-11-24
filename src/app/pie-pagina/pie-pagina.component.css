@@ -1,0 +1,37 @@
+
+
+
+footer{
+    height: 42px;
+    padding: 20px;
+    padding-bottom: 10px;
+    padding: 10px 0;
+    background-color:#202A62;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center; 
+    box-shadow: 0 -2px 5px rgba(0, 0, 0, 0.2);
+    border-bottom: 2;
+
+
+
+}
+.iconscontainer{
+    margin: 0px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 5px;
+    width: 200px;
+
+}
+.copyright{
+    font-size: 14px;
+    color: rgb(254, 239, 239);
+    opacity: 0.6;
+    margin-top: 20px;
+    
+}
+
+
