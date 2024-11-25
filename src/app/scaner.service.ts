@@ -28,6 +28,11 @@ export class ScanerService {
         return this.http.get<Stats>(urlBack + `stats/${facultad}/`);
       
       }
+      getStats() {
+      
+        return this.http.get<Stats>(urlBack + `stats_general/`);
+      
+      }
       getSinAcceso(facultad: string) {
         console.log(urlBack + `personas/personas_sin_acceso?facultad=${facultad}`)
         return this.http.get<any>(urlBack + `personas/personas_sin_acceso?facultad=${facultad}`);
@@ -37,6 +42,16 @@ export class ScanerService {
       }
       getConAcceso(facultad: string) {
         return this.http.get<Stats>(urlBack + `personas/personas_con_acceso?facultad=${facultad}`);
+      }
+
+      getSinAccesoGeneral() {
+        return this.http.get<any>(urlBack + `personas/personas_sin_acceso_general`);
+      }
+      getTotalGeneral() {
+        return this.http.get<Stats>(urlBack + `personas/personas_activas_general`);
+      }
+      getConAccesoGeneral() {
+        return this.http.get<Stats>(urlBack + `personas/personas_con_acceso_general`);
       }
   
 }

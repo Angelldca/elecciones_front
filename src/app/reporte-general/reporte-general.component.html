@@ -1,1 +1,107 @@
-<p>reporte-general works!</p>
+<div>
+    <div id="card_container">
+
+        <div class="card" id="total">
+            <div>
+                <img src="assets/img/groups.svg" alt="total">
+                <section class="info">
+                    <p>{{stats.total}}</p>
+
+                </section>
+            </div>
+            <span>Total de votantes de la facultad</span>
+        </div>
+
+        <div class="card" id="votos">
+            <div>
+                <img src="assets/img/votos.svg" alt="votos">
+                <section class="info">
+                    <p>{{stats.con_acceso}}</p>
+
+                </section>
+            </div>
+            <span>Votos registrados</span>
+        </div>
+        <div class="card" id="faltantes">
+            <div>
+                <img src="../../assets/img/rojio.png" alt="total">
+                <section class="info">
+                    <p>{{stats.sin_acceso}}</p>
+
+                </section>
+            </div>
+            <span>Votos faltantes</span>
+        </div>
+        <div class="card" id="porciento">
+            <div>
+                <img src="assets/img/clock_loader_porciento.svg" alt="porciento">
+                <section class="info">
+                    <p>{{stats.porciento}} %</p>
+
+                </section>
+            </div>
+            <span>Porcentaje cumplido</span>
+        </div>
+        <div class="card" id="porciento_faltante">
+            <div>
+                <img src="../../assets/img/porcentaje_restante.svg" alt="porciento">
+                <section class="info">
+                    <p>{{stats.porciento_restante}} %</p>
+
+                </section>
+            </div>
+            <span>Porcentaje Restante</span>
+        </div>
+
+    </div>
+
+    <!--Table-->
+    <!--Tabla Estudiantes-->
+    <div class="table-section">
+        <h4>Estudiantes</h4>
+        <br/>
+        <div id="filtrar_container">
+            <section>
+                <label for="mySelect">Filtrar</label>
+                <select id="dropdown" [(ngModel)]="selectedOption" (change)="onOptionChange($event)">
+                    @for (option of options; track $index) {
+                        <option [value]= "option.value" >
+                           {{option.label}}
+                        </option>
+
+                    }
+                  </select>
+
+            </section>
+            <button class="btn_export" (click)="download()">Exportar Registro CSV</button>
+        </div>
+        <br />
+        <table>
+            <thead>
+                <tr>
+                    <th>#</th>
+                    <th>Nombre</th>
+                    <th>Dni</th>
+                    <th>Solapín</th>
+                    <th>Grupo</th>
+
+                </tr>
+            </thead>
+            <tbody>
+
+                @for(estudiante of estudiantes; track $index; let idx = $count) {
+                <tr>
+                    <td>{{$index + 1}}</td>
+                    <td>{{estudiante.nombre}}</td>
+                    <td>{{estudiante.ci}}</td>
+                    <td>{{estudiante.solapin}}</td>
+                    <td>{{estudiante.grupo}}</td>
+
+                </tr>
+
+                }
+            </tbody>
+
+        </table>
+    </div>
+</div>

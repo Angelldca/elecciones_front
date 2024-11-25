@@ -38,7 +38,7 @@ export class ScanerComponent implements AfterViewInit, OnInit {
  getStatsFacultad(facultad:string){
   this.scanerService.getStatsFacultad(facultad).subscribe({
     next: data => {
-      console.log(data.personas)
+      
       this.stats.facultad = data.facultad;
       this.stats.total = data.total;
       this.stats.con_acceso = data.con_acceso;
