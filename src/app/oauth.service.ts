@@ -34,13 +34,16 @@ export class AuthService {
   getAccessToken(): string | null {
     return localStorage.getItem('access_token');
   }
+  getArea(): string | null {
+    return localStorage.getItem('area');
+  }
 
   // Método para eliminar el token de acceso
   logout(): void {
     localStorage.removeItem('access_token');
     localStorage.removeItem('refresh_token');
     localStorage.removeItem('area');
-    this.router.navigate(['/login']);
+    this.router.navigate(['/']);
   }
 
   // Método para verificar si el usuario está autenticado

@@ -2,6 +2,7 @@ import { AfterViewInit, Component, ElementRef, OnInit, ViewChild } from '@angula
 import { FormsModule } from '@angular/forms';
 import Swal from 'sweetalert2'
 import { IEstudiante, IPersona, ScanerService } from '../scaner.service';
+import { AuthService } from '../oauth.service';
 
 
 @Component({
@@ -15,6 +16,7 @@ import { IEstudiante, IPersona, ScanerService } from '../scaner.service';
 
 export class ScanerComponent implements AfterViewInit, OnInit {
   cantidad = 100;
+  facultad : string | null = '';
   scannedCode: string = '';
   nombre = ""
   solapin =''
@@ -31,11 +33,13 @@ export class ScanerComponent implements AfterViewInit, OnInit {
     con_acceso: 0,
     porciento: 0
   }
- constructor(private scanerService :ScanerService){}
+ constructor(private scanerService :ScanerService, private authService: AuthService){}
  ngOnInit(): void {
-   this.getStatsFacultad("Facultad de Tecnologías Interactivas")
+  this.facultad = this.authService.getArea();
+   this.getStatsFacultad(this.facultad)
  }
- getStatsFacultad(facultad:string){
+ getStatsFacultad(facultad:string | null){
+  if(facultad)
   this.scanerService.getStatsFacultad(facultad).subscribe({
     next: data => {
       

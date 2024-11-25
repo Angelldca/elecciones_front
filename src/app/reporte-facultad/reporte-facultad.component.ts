@@ -4,6 +4,7 @@ import { FormsModule } from '@angular/forms';
 import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 import { urlBack } from '../Finals';
 import { catchError, throwError } from 'rxjs';
+import { AuthService } from '../oauth.service';
 
 @Component({
   selector: 'app-reporte-facultad',
@@ -14,7 +15,7 @@ import { catchError, throwError } from 'rxjs';
 })
 export class ReporteFacultadComponent implements OnInit{
   estudiantes: IPersona[] = [];
-  facultad = "Facultad de Tecnologías Interactivas";
+  facultad :string | null = "";
   stats = {
     facultad: '',
     total: 0,
@@ -23,7 +24,7 @@ export class ReporteFacultadComponent implements OnInit{
     porciento_restante:0,
     porciento: 0
   }
-  constructor(private httpClient: HttpClient, private scanerService :ScanerService){}
+  constructor(private httpClient: HttpClient, private scanerService :ScanerService, private authService: AuthService){}
   selectedOption: string = 'listado_completo'; // Opción por defecto
   options: { value: string; label: string }[] = [
     { value: 'listado_completo', label: 'Listado de estudiantes' },
@@ -39,34 +40,39 @@ export class ReporteFacultadComponent implements OnInit{
   }
 
   ngOnInit(): void {
-    this.getStatsFacultad("Facultad de Tecnologías Interactivas"); 
+    this.facultad = this.authService.getArea();
+    this.getStatsFacultad(this.facultad); 
     if(this.selectedOption === 'listado_completo') this.getTotal(this.facultad);
     if(this.selectedOption === 'votos_realizados') this.getConAcceso(this.facultad);
     if(this.selectedOption === 'votos_faltantes') this.getSinAcceso(this.facultad);
     
   }
-  getStatsFacultad(facultad:string){
-    this.scanerService.getStatsFacultad(facultad).subscribe({
-      next: data => {
-
-        this.stats.facultad = data.facultad;
-        this.stats.total = data.total;
-        this.stats.con_acceso = data.con_acceso;
-        this.stats.sin_acceso = data.sin_acceso;
-        this.stats.porciento_restante = data.porciento_restante;
-        this.stats.porciento = data.porciento;
-
-        //this.estudiantes = data.personas;
+  getStatsFacultad(facultad:string | null){
+    if (facultad){
+      this.scanerService.getStatsFacultad(facultad).subscribe({
+        next: data => {
   
-       ;
-      }, // success path
-      error: error => {
-        console.log(error)
-      }, // error path
-    })
+          this.stats.facultad = data.facultad;
+          this.stats.total = data.total;
+          this.stats.con_acceso = data.con_acceso;
+          this.stats.sin_acceso = data.sin_acceso;
+          this.stats.porciento_restante = data.porciento_restante;
+          this.stats.porciento = data.porciento;
+  
+          //this.estudiantes = data.personas;
+    
+         ;
+        }, // success path
+        error: error => {
+          console.log(error)
+        }, // error path
+      })
+    }
+   
    }
 
-   getSinAcceso(facultad:string){
+   getSinAcceso(facultad:string | null){
+    if(facultad)
     this.scanerService.getSinAcceso(facultad).subscribe({
       next: data => {
         console.log(data)
@@ -78,7 +84,8 @@ export class ReporteFacultadComponent implements OnInit{
       }, // error path
     })
    }
-   getTotal(facultad:string){
+   getTotal(facultad:string | null){
+    if(facultad)
     this.scanerService.getTotal(facultad).subscribe({
       next: data => {
         console.log(data)
@@ -90,7 +97,8 @@ export class ReporteFacultadComponent implements OnInit{
       }, // error path
     })
    }
-   getConAcceso(facultad:string){
+   getConAcceso(facultad:string | null){
+    if(facultad)
     this.scanerService.getConAcceso(facultad).subscribe({
       next: data => {
         console.log(data)

@@ -5,6 +5,7 @@ import { ReporteFacultadComponent } from './reporte-facultad/reporte-facultad.co
 import { ReporteGeneralComponent } from './reporte-general/reporte-general.component';
 import { LoginComponent } from './login/login.component';
 import { authGuard } from './guard/auth.guard';
+import { NotFoundComponent } from './not-found/not-found.component';
 
 export const routes: Routes = [
     {path: '', component: LoginComponent },
@@ -26,5 +27,6 @@ export const routes: Routes = [
                 providers:[], //CiudadanoService
                 component: ReporteGeneralComponent, 
               }
-         ]}
+         ]},
+         { path: '**', component: NotFoundComponent }
 ];

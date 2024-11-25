@@ -1,5 +1,6 @@
 import { Component, Input, booleanAttribute } from '@angular/core';
 import { Router } from '@angular/router';
+import { AuthService } from '../oauth.service';
 
 @Component({
   selector: 'app-encabezado',
@@ -11,10 +12,10 @@ import { Router } from '@angular/router';
 })
 export class EncabezadoComponent {
 
- @Input({ transform: booleanAttribute }) isLoged: boolean | undefined;
- constructor(){
+  area = this.authService.getArea();
+ constructor( private authService: AuthService){
 }
 logOut(){
-  console.log("log out")
+  this.authService.logout()
 }
 }

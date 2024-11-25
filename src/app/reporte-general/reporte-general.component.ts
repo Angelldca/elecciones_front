@@ -4,6 +4,7 @@ import { FormsModule } from '@angular/forms';
 import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 import { urlBack } from '../Finals';
 import { catchError, throwError } from 'rxjs';
+import { AuthService } from '../oauth.service';
 @Component({
   selector: 'app-reporte-general',
   standalone: true,
@@ -13,7 +14,7 @@ import { catchError, throwError } from 'rxjs';
 })
 export class ReporteGeneralComponent implements OnInit{
   estudiantes: IPersona[] = [];
-  facultad = "Facultad de Tecnologías Interactivas";
+  
   stats = {
     facultad: '',
     total: 0,
@@ -39,6 +40,7 @@ export class ReporteGeneralComponent implements OnInit{
 
   ngOnInit(): void {
     this.getStats(); 
+    
     if(this.selectedOption === 'listado_completo') this.getTotal();
     if(this.selectedOption === 'votos_realizados') this.getConAcceso();
     if(this.selectedOption === 'votos_faltantes') this.getSinAcceso();
