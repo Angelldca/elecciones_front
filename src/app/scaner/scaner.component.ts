@@ -53,7 +53,7 @@ export class ScanerComponent implements AfterViewInit, OnInit {
         const votante = this.estudiantes[0];
         this.alertVoto(`Voto número 22 \n${votante.nombre} \n Solapín: ${votante.solapin}`)
       }
-      if(this.stats.con_acceso ==3){
+      if(this.stats.con_acceso ==102){
         const votante = this.estudiantes[0];
         this.alertVoto(`Voto número 102 \n${votante.nombre} \n Solapín: ${votante.solapin}`)
       }

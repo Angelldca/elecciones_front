@@ -1,9 +1,4 @@
 /* Página general */
-body {
-    font-family: 'Roboto', sans-serif; /* Fuente moderna */
-    -webkit-font-smoothing: antialiased; /* Suavizar fuentes */
-    -moz-osx-font-smoothing: grayscale;
-}
 
 .login-page {
     position: relative;
