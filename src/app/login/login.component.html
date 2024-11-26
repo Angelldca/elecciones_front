@@ -1,46 +1,52 @@
-<div class="logincontainer">
-    <div class="container">
-    
-
-        <div class="login-container">
+<div class="login-page">
+    <div class="background-image"></div>
+    <div class="login-content">
+        <!-- Formulario -->
+        <div class="form-container">
             <form [formGroup]="userForm" (ngSubmit)="onSubmit()">
-               
-                <h2>Iniciar Sesión </h2>
-                <div class="input-div one ">
+                <h2>Iniciar Sesión</h2>
+                <!-- Campo de Usuario -->
+                <div class="input-div">
                     <div class="i">
                         <i class="fas fa-user"></i>
                     </div>
-                    <div>
-                        @if (mostrarMensaje) {
-                        <h5>Nombre de usuario</h5>
-                        }
-
-                        <input class="input" type="text" (input)="onInput1($event)" formControlName="username"
-                            autocomplete="username" required>
-                    </div>
+                    <input 
+                        class="input" 
+                        type="text" 
+                        placeholder="Usuario" 
+                        (input)="onInput1($event)" 
+                        formControlName="username" 
+                        autocomplete="username" 
+                        required>
                 </div>
-                <div class="input-div two">
+                <!-- Campo de Contraseña -->
+                <div class="input-div">
                     <div class="i">
                         <i class="fas fa-lock"></i>
                     </div>
-                    <div>
-                        @if (mostrarContrasena) {
-                        <h5>Contraseña</h5>
-                        }
-                        <input class="input" type="password" (input)="onInput2($event)" formControlName="password"
-                            autocomplete="current-password" required>
-                    </div>
+                    <input 
+                        class="input" 
+                        type="password" 
+                        placeholder="Contraseña" 
+                        (input)="onInput2($event)" 
+                        formControlName="password" 
+                        autocomplete="current-password" 
+                        required>
                 </div>
-               <section>
-                   <button type="submit" [class]="{'btn':userForm.valid, 'btnInvalid': !userForm.valid}"
-                       [disabled]="!userForm.valid">Entrar
-                   </button>
-          
-
-               </section>
+                <!-- Botón de Enviar -->
+                <button 
+                    type="submit" 
+                    [class]="{'btn':userForm.valid, 'btnInvalid': !userForm.valid}" 
+                    [disabled]="!userForm.valid">
+                    Entrar
+                </button>
             </form>
         </div>
-      
+        <!-- Contenido derecho -->
+        <div class="right-section">
+            <h1>Bienvenido a Elecciones UCI</h1>
+            <p>Un portal seguro para gestionar tus votaciones</p>
+            <img src="../../assets/img/logouci.png" alt="Logo UCI" class="welcome-image">
+        </div>
     </div>
-
 </div>
