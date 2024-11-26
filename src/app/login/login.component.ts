@@ -74,8 +74,8 @@ export class LoginComponent implements OnInit{
       error: (error) => {
         console.log(error)
         Swal.fire({
-          title: 'Oops...',
-          text: error.error.non_field_errors[0],
+          title: 'Acceso denegado',
+          text: error.error.detail,
           icon: 'error',
           footer: ``,
           confirmButtonText: 'Aceptar',

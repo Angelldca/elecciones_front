@@ -49,7 +49,7 @@ export class ScanerComponent implements AfterViewInit, OnInit {
       this.stats.porciento = data.porciento;
       this.estudiantes = data.personas;
 
-      if(this.stats.con_acceso ==2){
+      if(this.stats.con_acceso ==22){
         const votante = this.estudiantes[0];
         this.alertVoto(`Voto número 22 \n${votante.nombre} \n Solapín: ${votante.solapin}`)
       }
@@ -144,7 +144,14 @@ onScan() {
                 });
               }
             });
-          }else{
+          }else if(error.error.error === 'Evento finalizado'){
+            Swal.fire({
+              icon: "warning",
+              title: error.error.error,
+              text: "El proceso de votación ha culminado",
+            });
+          }
+          else{
             Swal.fire({
               icon: "warning",
               title: "Voto no registrado",

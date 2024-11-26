@@ -1,15 +1,19 @@
 <div class="login-page">
     <div class="background-image"></div>
     <div class="login-content">
+        <!-- Contenido derecho -->
+        <div class="right-section">
+            <img src="../../assets/img/logouci.png" alt="Logo UCI" class="welcome-image">
+            <h1>Elecciones</h1>
+            <p>Un portal seguro para gestionar tus votaciones</p>
+        </div>
         <!-- Formulario -->
         <div class="form-container">
             <form [formGroup]="userForm" (ngSubmit)="onSubmit()">
                 <h2>Iniciar Sesión</h2>
                 <!-- Campo de Usuario -->
                 <div class="input-div">
-                    <div class="i">
-                        <i class="fas fa-user"></i>
-                    </div>
+                   
                     <input 
                         class="input" 
                         type="text" 
@@ -21,9 +25,7 @@
                 </div>
                 <!-- Campo de Contraseña -->
                 <div class="input-div">
-                    <div class="i">
-                        <i class="fas fa-lock"></i>
-                    </div>
+                    
                     <input 
                         class="input" 
                         type="password" 
@@ -42,11 +44,6 @@
                 </button>
             </form>
         </div>
-        <!-- Contenido derecho -->
-        <div class="right-section">
-            <h1>Bienvenido a Elecciones UCI</h1>
-            <p>Un portal seguro para gestionar tus votaciones</p>
-            <img src="../../assets/img/logouci.png" alt="Logo UCI" class="welcome-image">
-        </div>
+        
     </div>
 </div>
