@@ -68,7 +68,7 @@ export class ScanerComponent implements AfterViewInit, OnInit {
       this.area = data.persona.facultad;
       this.acceso = data.persona.acceso;
       this.activo = data.persona.activo;
-      this.getStatsFacultad("Facultad de Tecnologías Interactivas")
+      this.getStatsFacultad(this.facultad)
 
      ;
     }, // success path
@@ -96,7 +96,7 @@ onScan() {
           this.area = data.persona.facultad;
           this.acceso = data.persona.acceso;
           this.activo = data.persona.activo;
-          this.getStatsFacultad("Facultad de Tecnologías Interactivas")
+          this.getStatsFacultad(this.facultad)
         }, // success path
         error: error => {
           
@@ -114,15 +114,15 @@ onScan() {
                 this.makeActive(error.error.persona.solapin)
                 Swal.fire({
                   title: "Voto registrado",
-                  text: "Se registró el voto en el sistema",
+                  text: "Los datos de la persona han sido añadidos correctamente",
                   icon: "success"
                 });
               }
             });
           }else{
             Swal.fire({
-              icon: "error",
-              title: "Error",
+              icon: "warning",
+              title: "Voto no registrado",
               text: error.error.error,
             });
           }
