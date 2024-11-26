@@ -49,12 +49,37 @@ export class ScanerComponent implements AfterViewInit, OnInit {
       this.stats.porciento = data.porciento;
       this.estudiantes = data.personas;
 
+      if(this.stats.con_acceso ==2){
+        const votante = this.estudiantes[0];
+        this.alertVoto(`Voto número 22 \n${votante.nombre} \n Solapín: ${votante.solapin}`)
+      }
+      if(this.stats.con_acceso ==3){
+        const votante = this.estudiantes[0];
+        this.alertVoto(`Voto número 102 \n${votante.nombre} \n Solapín: ${votante.solapin}`)
+      }
+
      ;
     }, // success path
     error: error => {
       console.log(error)
     }, // error path
   })
+ }
+ 
+ alertVoto(mensaje: string){
+  Swal.fire({
+    title: mensaje,
+    width: 600,
+    padding: "3em",
+    color: "#202A62",
+    background: "#fff url(/images/trees.png)",
+    backdrop: `
+      rgba(0,0,123,0.4)
+      url("/assets/img/bday-303.gif")
+      center
+      repeat
+    `
+  });
  }
  makeActive(solapin:string){
   this.scanerService.makeActive(solapin).subscribe({

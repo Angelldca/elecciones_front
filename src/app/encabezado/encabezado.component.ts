@@ -1,7 +1,7 @@
 import { Component, Input, booleanAttribute } from '@angular/core';
 import { Router } from '@angular/router';
 import { AuthService } from '../oauth.service';
-
+import Swal from 'sweetalert2'
 @Component({
   selector: 'app-encabezado',
   standalone: true,
@@ -18,4 +18,5 @@ export class EncabezadoComponent {
 logOut(){
   this.authService.logout()
 }
+
 }
